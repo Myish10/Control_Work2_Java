@@ -2,7 +2,7 @@ public class Toy {
 
     private String toyName;
 
-    private int id;
+    private final int id;
     private static int count = 100;
     private int weight;
     private String nameBrand;
