@@ -13,6 +13,7 @@ public class ToysRaffle {
 
         System.out.println(toys);
         System.out.println("Было игрушек: " + toys.size());
+        fileWrite(toys, "result.txt");
         System.out.println("*".repeat(10));
 
         System.out.println(addToys(toys, 2));
@@ -24,7 +25,6 @@ public class ToysRaffle {
         System.out.println(toys);
         System.out.println("Стало игрушек3: " + toys.size());
 
-        fileWrite(toys, "result.txt");
 
 
     }
