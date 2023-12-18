@@ -31,14 +31,20 @@ public class ToysRaffle {
 
     public static LinkedList<Toy> getToys(int count) {
         LinkedList<Toy> toys = new LinkedList<>();
-        for (int i = 0; i < count; i++) {
+        int counter1 = 0;
+        int counter2 = 0;
+        int counter3 = 0;
+        while (toys.size() < count) {
             int chance = random.nextInt(5);
-            if (chance == 0) {
+            if (chance == 0 && counter1 < count * 0.2) {
                 toys.add(ToysFactory.generateConstructor());
-            } else if (chance == 1) {
+                counter1++;
+            } else if (chance == 1 && counter2 < count * 0.2) {
                 toys.add(ToysFactory.generateRobot());
-            } else {
+                counter2++;
+            } else if (counter3 < count * 0.6){
                 toys.add(ToysFactory.generateDoll());
+                counter3++;
             }
         }
         return toys;
@@ -61,8 +67,9 @@ public class ToysRaffle {
             int num = 0;
             for (Toy toy: toys) {
                 num++;
-                writer.write("Игрушка"+ num + ": " + toy.getToyName() + " ");
-                writer.write("ID: " + toy.getId() + ";\n");
+                writer.write("Игрушка"+ num + ": " + toy.getToyName() + "; ");
+                writer.write("ID: " + toy.getId() + "; ");
+                writer.write("Вероятность выпадения: " + toy.getWeight() + "%\n");
             }
             writer.flush();
         }
